@@ -1,23 +1,69 @@
-# JudgeABookByItsCover
+# Judge A Book By Its Cover 👨🏽‍⚖️📚📔
 
-INTRODUCTION:
-The specific problem I intend to address and solve is the need to choose the right book based on one’s existing preferences.
+## 🎯 Project Objective
 
-Currently, the problem people face in maintaining their reading habit is the choice of books. Once I find a book I enjoy, I try to relive that experience by searching for a book similar to the previous one.
+Many readers struggle to continue their reading habit because finding the *right* book after finishing a good one becomes difficult. This project aims to **predict the genre of a book based on its title and cover image**, helping users discover similar books aligned with their tastes — much like trying to *relive a great reading experience*.
 
-This exact need is fulfilled by our attempt, where based on the cover page of a book of our choice, I classify and predict its genre to find books that are of a similar nature.
+---
 
-IMPLEMENTATION:
-In the feedforward network, there are three layers: the input layer, the hidden layer, and the output layer. Once I feed my input to the hidden layer, which hosts all the mathematical operations such as linear combinations and activation functions, they process the data and provide the transformed output.
+## 🧠 Solution Approach
 
-By using this methodology, the ‘Title-of-book’ data from the dataset is split, and a count is made of each word used in the title, resulting in the grouped total of each word. Afterward, titles and genres (Target Variable) are transformed into vectors to check how many times each word sourced from all titles is repeated in each individual title and in one type of genre.
+The project uses both **Natural Language Processing (NLP)** and **Computer Vision (CV)** to classify book genres. Initially, it classifies based on **titles**, and then scales up to include **cover images** using deep learning.
 
-Once the data is preprocessed, the following machine learning models were used to train and predict the genres from the data. Before implementing the major learning models, i.e., RNN and LSTM, the following simpler models were used to predict the genres and simultaneously calculate the accuracy parameter, the ‘F1 Score’.
+### 📝 Text-Based Pipeline
 
-Logistic Regression
+- **Tokenization & Word Count**: Each book title is tokenized, and a count of each word’s frequency is created.
+- **Vectorization**: Using CountVectorizer or similar, each title is converted into a feature vector.
+- **Label Encoding**: Genre labels (target variable) are vectorized for supervised learning.
 
-Multi Nominal Naïve Bayes
+### 🖼️ Image-Based Pipeline
 
-Multi Layer Perceptron
+- Trained a **deep learning model** using Python and frameworks like **NumPy**, **Pandas**, and **Matplotlib** to predict genres based on **book cover images**.
+- Dataset: 32,600 book cover images.
+- Achieved **80% accuracy after 20 epochs**, with **peak metrics**:
+  - **Precision**: 97%
+  - **Recall**: 95%
+  - **F1 Score**: 93%
 
-XGBoost
+---
+
+## 🔧 Machine Learning Models Implemented
+
+For title-based genre prediction:
+
+1. **Logistic Regression**
+2. **Multinomial Naïve Bayes**
+3. **Multi-Layer Perceptron (MLP)**
+4. **XGBoost**
+
+These models were trained on vectorized title data and evaluated using the **F1 Score** metric.
+
+---
+
+## 🔄 Neural Network Architecture
+
+For both title and image-based models:
+
+- **Input Layer**: Accepts either vectorized text or image pixels.
+- **Hidden Layer(s)**: Perform transformations using activation functions (e.g., ReLU) and feature extraction.
+- **Output Layer**: Predicts the genre from predefined categories.
+
+---
+
+## 🚀 Advanced Models
+
+To capture sequential patterns and improve title-based predictions:
+
+- **Recurrent Neural Networks (RNN)**
+- **Long Short-Term Memory (LSTM)** networks
+
+These architectures enhance genre prediction accuracy by leveraging word order and contextual dependencies.
+
+---
+
+## 📊 Evaluation Metrics
+
+- **F1 Score** used for all classical models.
+- For deep learning (image-based):
+  - **Accuracy over Epochs**
+  - **Precision**, **Recall**, and **F1 Score** as key indicators of performance.
